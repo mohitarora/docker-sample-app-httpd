@@ -15,6 +15,9 @@
             "playbook_file": "playbooks/local.yml",
             "role_paths":[
                 "roles/sample-app-httpd"
+            ],
+            "extra_arguments":[
+                "--extra-vars 'version={{user `version`}}'"
             ]
         }
     ],

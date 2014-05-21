@@ -7,3 +7,6 @@
     - { src: 'httpd-proxy.conf.tmpl', dest: '/etc/confd/templates' }
     - { src: 'httpd-proxy.toml', dest: '/etc/confd/conf.d' }
     - { src: 'launch.sh', dest: '/opt' }
+
+- name: Add docker image tag to environment file
+  lineinfile: dest=/etc/environment line='IMAGE_VERSION="{{ version }}"'
