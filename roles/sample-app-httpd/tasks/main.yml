@@ -2,7 +2,7 @@
 # file: roles/sample-app-httpd/tasks/main.yml
 
 - name: Copy Confd files and startup script
-  copy: src={{ item.src }} dest={{ item.src }} mode=0744
+  copy: src={{ item.src }} dest={{ item.dest }} mode=0744
   with_items:
     - { src: 'httpd-proxy.conf.tmpl', dest: '/etc/confd/templates' }
     - { src: 'httpd-proxy.toml', dest: '/etc/confd/conf.d' }
