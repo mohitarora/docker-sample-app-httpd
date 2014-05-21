@@ -1,0 +1,29 @@
+{
+    "variables": {
+        "version": "",
+        "httpd-base-image-version": ""
+    },
+    "builders":[{
+        "type": "docker",
+        "image": "mohitarora/httpd-base:{{user `httpd-base-image-version`}}",
+        "pull": true,
+        "export_path": "sample-app-httpd-{{user `version`}}.tar"
+    }],
+    "provisioners":[
+        {
+            "type": "ansible-local",
+            "playbook_file": "playbooks/local.yml",
+            "role_paths":[
+                "roles/sample-app-httpd"
+            ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "docker-import",
+            "repository": "mohitarora/sample-app-httpd",
+            "tag": "{{user `version`}}"
+        },
+        "docker-push"
+    ]
+}

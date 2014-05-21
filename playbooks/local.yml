@@ -1,0 +1,8 @@
+---
+# file: local.yml
+- hosts: 127.0.0.1
+  remote_user: root
+  gather_facts: no
+
+  roles:
+    - sample-app-httpd
